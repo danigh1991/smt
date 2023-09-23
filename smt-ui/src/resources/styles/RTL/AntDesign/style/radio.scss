@@ -1,0 +1,11 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN Radio */
+
+.rtl {
+  .ant-radio-group {
+    direction: ltr;
+  }
+}

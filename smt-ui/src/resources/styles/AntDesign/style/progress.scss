@@ -1,0 +1,22 @@
+// Import mixins from "core" module
+@import "../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN PROGRESS */
+
+.ant-progress-text {
+  white-space: nowrap;
+}
+
+.pending-requests {
+  line-height: 0;
+
+  .ant-progress,
+  .ant-progress-outer {
+    line-height: 0;
+  }
+
+  .ant-progress-inner {
+    border-radius: 0;
+  }
+}

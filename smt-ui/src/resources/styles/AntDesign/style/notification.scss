@@ -1,0 +1,13 @@
+// Import mixins from "core" module
+@import "../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN NOTIFICATION */
+
+.ant-notification-notice-content {
+  font-family: $base__font-family;
+}
+
+.ant-notification {
+  max-width: calc(100vw - 48px);
+}

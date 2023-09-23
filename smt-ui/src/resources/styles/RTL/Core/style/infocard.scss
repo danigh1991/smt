@@ -1,0 +1,14 @@
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  INFOCARD STYLES */
+
+.rtl {
+  .infoCard {
+    .digit {
+      float: right;
+      margin-right: unset;
+      margin-left: rem(20);
+    }
+  }
+}

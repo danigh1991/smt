@@ -1,0 +1,45 @@
+server:
+  port: 9090
+  context-path: /api
+
+spring:
+  datasource:
+    #url: jdbc:mysql://db.devsamat.ir:33065/smt_db?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://develop.devsamat.ir:3340/smt_db?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: salam
+    validationQuery: SELECT 1
+    testOnBorrow: true
+  jpa:
+    properties:
+      javax:
+        persistence:
+          validation:
+            mode: none
+
+flyway:
+  enabled: true
+  baselineOnMigrate: true
+  validateOnMigrate: false
+
+userManagement:
+  properties:
+    loginLogEnabled: true
+  maximumSessions: 1
+  maxSessionsPreventsLogin: false
+
+multipart:
+  max-file-size: 5MB
+  max-request-size: 5MB
+
+user:
+  complicatedPassword: true
+
+captcha:
+  urls: /login
+  height: 100
+  width: 200
+  fonSize: 35
+  numeric: true
+  gradientColor1: BLUE
+  gradientColor2: darkGray

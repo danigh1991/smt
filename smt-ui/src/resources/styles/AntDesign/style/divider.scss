@@ -1,0 +1,11 @@
+// Import mixins from "core" module
+@import "../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN DIVIDER */
+
+.ant-divider-horizontal {
+  width: 80%;
+  min-width: 80%;
+  margin: 10px auto;
+}

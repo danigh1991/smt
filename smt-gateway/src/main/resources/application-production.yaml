@@ -1,0 +1,4 @@
+zuul:
+  routes:
+    app:
+      url: http://smt-core:9090/api

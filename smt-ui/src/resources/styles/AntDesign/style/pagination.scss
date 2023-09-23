@@ -1,0 +1,16 @@
+// Import mixins from "core" module
+@import "../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN PAGINATION */
+
+.ant-pagination {
+  width: 100%;
+  text-align: center;
+  .ant-pagination-total-text {
+    float: left;
+  }
+  .ant-pagination-options {
+    float: right;
+  }
+}

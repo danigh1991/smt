@@ -1,0 +1,92 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN INPUT */
+
+.rtl {
+  .ant-input {
+    direction: rtl;
+    font-family: $base-rtl__font-family;
+  }
+
+  .ant-form-item-has-error .ant-input-group-addon {
+    border-right: 1px solid $danger;
+    border-left: 1px solid $danger !important;
+  }
+
+  .ant-input-group > .ant-input:first-child,
+  .ant-input-group-addon:first-child {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  .ant-input-group-addon {
+    font-family: $base-rtl__font-family;
+  }
+
+  .ant-input-group > .ant-input:first-child .ant-select .ant-select-selection,
+  .ant-input-group-addon:first-child .ant-select .ant-select-selection {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  .ant-input-group > .ant-input-affix-wrapper:not(:first-child) .ant-input {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .ant-input-group > .ant-input-affix-wrapper:not(:last-child) .ant-input {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  .ant-input-group-addon:last-child {
+    border-left: 1px solid $gray-border;
+  }
+
+  .ant-input-group-addon:last-child {
+    border-right: 0;
+  }
+
+  .ant-input-group > .ant-input:last-child,
+  .ant-input-group-addon:last-child {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .ant-input-group > .ant-input:last-child .ant-select .ant-select-selection,
+  .ant-input-group-addon:last-child .ant-select .ant-select-selection {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .has-error .ant-input-group-addon {
+    border-color: $danger !important;
+  }
+
+  .ant-input-affix-wrapper .ant-input-prefix {
+    left: unset;
+    right: 12px;
+  }
+
+  .ant-input-affix-wrapper .ant-input-suffix {
+    left: 12px;
+    right: unset;
+  }
+
+  .ant-input-number-handler-wrap {
+    right: unset;
+    left: 0;
+    border-right: 1px solid #e4e9f0;
+    border-left: unset;
+  }
+
+  .ant-input-number-input {
+    text-align: right;
+  }
+
+  .numeric-input-title {
+    font-family: $base-rtl__font-family;
+  }
+}

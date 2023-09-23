@@ -1,0 +1,174 @@
+@import "../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  INFOCARD STYLES */
+
+.infoCard {
+  color: $text;
+  background-color: $white;
+  padding: rem(20);
+  border-radius: 3px;
+  display: block;
+  margin-bottom: rem(20);
+
+  @media (max-width: $md-max-width) {
+    margin-bottom: rem(16) !important;
+    margin-top: 0 !important;
+  }
+
+  &__default,
+  &__primary,
+  &__secondary,
+  &__success,
+  &__info,
+  &__warning,
+  &__danger {
+    color: $white;
+  }
+
+  &__empty {
+    border: 1px solid $gray-border;
+  }
+
+  &__default {
+    background: $default;
+  }
+
+  &__primary {
+    background: $primary;
+  }
+
+  &__secondary {
+    background: $secondary;
+  }
+
+  &__success {
+    background: $success;
+  }
+
+  &__info {
+    background: $info;
+  }
+
+  &__warning {
+    background: $warning;
+  }
+
+  &__danger {
+    background: $danger;
+  }
+
+  &__disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+
+  &__squared {
+    border-radius: 0;
+  }
+
+  .digit {
+    float: left;
+    margin-right: rem(20);
+    font-size: rem(42);
+    width: rem(56);
+    line-height: rem(50);
+    text-align: center;
+    font-weight: bold;
+    i {
+      font-size: rem(36);
+    }
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: rem(16);
+  }
+
+  .desc {
+    p {
+      margin-bottom: 0;
+    }
+    span {
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 2.5;
+    }
+  }
+
+  .bordered {
+    padding: rem(5) 0 rem(10) 0;
+    margin-bottom: rem(-12);
+    margin-top: rem(0);
+    background-color: $white;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    border-radius: 0;
+    .digit {
+      font-size: rem(28);
+      line-height: rem(38);
+      height: rem(24);
+      display: block;
+      width: auto;
+      min-width: rem(40);
+      margin: 0 rem(10);
+      i {
+        font-size: rem(24);
+      }
+    }
+    .title {
+      font-weight: bold;
+      font-size: rem(13);
+    }
+    .desc {
+      padding-top: 0;
+      p {
+        font-size: rem(12);
+        margin-bottom: rem(5);
+        color: $gray-darken;
+      }
+    }
+
+    &__default {
+      color: $text;
+      background-color: $white;
+      border-bottom-color: $default;
+    }
+
+    &__primary {
+      color: $text;
+      background-color: $white;
+      border-bottom-color: $primary;
+    }
+
+    &__secondary {
+      color: $text;
+      background-color: $white;
+      border-bottom-color: $secondary;
+    }
+
+    &__success {
+      color: $text;
+      background-color: $white;
+      border-bottom-color: $success;
+    }
+
+    &__info {
+      color: $text;
+      background-color: $white;
+      border-bottom-color: $info;
+    }
+
+    &__warning {
+      color: $text;
+      background-color: $white;
+      border-bottom-color: $warning;
+    }
+
+    &__danger {
+      color: $text;
+      background-color: $white;
+      border-bottom-color: $danger;
+    }
+  }
+}

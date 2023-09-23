@@ -1,0 +1,9 @@
+// Import mixins from "core" module
+@import "../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN TREE */
+
+.ant-tree-show-line .ant-tree-switcher {
+  z-index: 0 !important;
+}

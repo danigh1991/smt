@@ -1,0 +1,113 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN DATEPICKER */
+
+.rtl {
+  .ant-calendar-picker-container {
+    font-family: $base-rtl__font-family;
+    .ant-calendar-range-left {
+      float: right;
+      border-left-width: 1px;
+      border-right: none;
+      .ant-calendar-time-picker-inner {
+        border-left: 1px solid #e8e8e8;
+        border-right: none;
+      }
+    }
+    .ant-calendar-range-right {
+      float: left;
+      .ant-calendar-time-picker-inner {
+        border-right: 1px solid #e8e8e8;
+        border-left: none;
+      }
+    }
+    .ant-calendar-column-header {
+      width: 35px;
+      float: right;
+    }
+    .ant-calendar-tbody {
+      tr {
+        float: right;
+      }
+      .ant-calendar-date {
+        width: 26px;
+      }
+    }
+    .ant-calendar-cell {
+      padding: 3px 4.2px;
+      float: right;
+    }
+    .ant-calendar-range.ant-calendar-time .ant-calendar-range-middle {
+      padding: 0 0 0 10px;
+    }
+    .ant-calendar-input {
+      text-align: right;
+    }
+    .ant-calendar-header {
+      .ant-calendar-next-month-btn {
+        left: 29px;
+        right: unset;
+      }
+      .ant-calendar-next-year-btn {
+        left: 7px;
+        right: unset;
+      }
+      .ant-calendar-next-month-btn:before {
+        transform: rotate(-45deg) scale(0.8);
+      }
+      .ant-calendar-next-year-btn:before,
+      .ant-calendar-next-year-btn:after {
+        transform: rotate(-45deg) scale(0.8);
+      }
+      .ant-calendar-prev-month-btn {
+        right: 29px;
+        left: unset;
+      }
+      .ant-calendar-prev-year-btn {
+        right: 7px;
+        left: unset;
+      }
+      .ant-calendar-prev-month-btn:before {
+        transform: rotate(135deg) scale(0.8);
+      }
+      .ant-calendar-prev-year-btn:before,
+      .ant-calendar-prev-year-btn:after {
+        transform: rotate(135deg) scale(0.8);
+      }
+    }
+    .ant-calendar-time {
+      .ant-calendar-footer-btn {
+        text-align: left;
+      }
+      .ant-calendar-time-picker-btn {
+        float: right;
+      }
+    }
+  }
+  .ant-calendar-picker {
+    .ant-calendar-picker-clear,
+    .ant-calendar-picker-icon {
+      left: 12px;
+      right: unset;
+    }
+    input {
+      direction: ltr;
+      text-align: center;
+    }
+  }
+  .ant-picker-input {
+    input {
+      direction: ltr;
+      text-align: right;
+    }
+  }
+  .ant-picker-cell,
+  .ant-picker-cell-inner,
+  .ant-picker-decade-btn,
+  .ant-picker-time-panel-cell,
+  .ant-picker-header-view {
+    font-family: $base-rtl__font-family;
+  }
+}

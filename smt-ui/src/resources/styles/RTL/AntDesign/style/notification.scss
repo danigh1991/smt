@@ -1,0 +1,12 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN Notification */
+
+.rtl {
+  .ant-notification-notice-content {
+    direction: rtl;
+    text-align: right;
+  }
+}

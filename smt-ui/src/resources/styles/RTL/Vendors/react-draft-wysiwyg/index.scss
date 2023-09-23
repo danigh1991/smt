@@ -1,0 +1,23 @@
+.rtl {
+  .rdw-embedded-modal,
+  .rdw-emoji-modal,
+  .rdw-image-modal,
+  .rdw-link-modal,
+  .rdw-colorpicker-modal {
+    left: unset;
+    right: 5px;
+  }
+  .rdw-dropdown-carettoopen,
+  .rdw-dropdown-carettoclose {
+    left: 10%;
+    right: unset;
+  }
+  .public-DraftStyleDefault-rtl,
+  .public-DraftStyleDefault-listRTL {
+    font-family: $base-rtl__font-family;
+  }
+  .rdw-link-modal-target-option > span {
+    margin-left: unset;
+    margin-right: 5px;
+  }
+}

@@ -1,0 +1,129 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN TABLE */
+
+.rtl {
+  .ant-table-thead {
+    tr {
+      th {
+        text-align: center;
+        padding-right: 30px !important;
+        padding-left: 30px !important;
+        white-space: nowrap;
+        .ant-table-column-sorters {
+          direction: rtl;
+          .ant-table-column-sorter {
+            right: unset;
+            left: 6px;
+          }
+        }
+      }
+    }
+  }
+
+  .editable-cell-input-wrapper,
+  .editable-cell-text-wrapper {
+    padding-right: 24px;
+    padding-left: unset;
+  }
+
+  .editable-cell-text-wrapper {
+    padding: 5px 24px 5px 5px;
+  }
+
+  .editable-cell-icon,
+  .editable-cell-icon-check {
+    left: unset;
+    right: 0;
+  }
+
+  .editable-row-operations a {
+    margin-left: 8px;
+    margin-right: unset;
+  }
+
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
+  .table-responsive > .table-bordered {
+    border: 0;
+  }
+
+  .ant-table-scroll {
+    table {
+      .ant-table-fixed-columns-in-body {
+        visibility: unset !important;
+        width: 1px;
+      }
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .table-responsive-sm {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+    .table-responsive-sm > .table-bordered {
+      border: 0;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .table-responsive-md {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+    .table-responsive-md > .table-bordered {
+      border: 0;
+    }
+  }
+
+  @media (max-width: 991.98px) {
+    .table-responsive-lg {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+    .table-responsive-lg > .table-bordered {
+      border: 0;
+    }
+
+    .ant-pagination {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+    }
+  }
+
+  @media (max-width: 1199.98px) {
+    .table-responsive-xl {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
+
+    .table-responsive-xl > .table-bordered {
+      border: 0;
+    }
+  }
+}

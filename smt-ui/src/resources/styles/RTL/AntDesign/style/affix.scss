@@ -1,0 +1,15 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN AFFIX */
+
+.rtl {
+  .affix-container {
+    .affix-background {
+      .ant-btn {
+        line-height: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+// Import mixins from "core" module
+@import "../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN FORM */
+
+.ant-form {
+  .button {
+    text-align: right;
+  }
+  .cancel-button {
+    margin-bottom: 0;
+  }
+  .submit-button {
+    margin-left: 10px;
+    margin-right: unset;
+  }
+  .editor {
+    padding: 1rem;
+    border-radius: 2px;
+    border: 1px solid $gray-border;
+  }
+}
+
+.ant-form-item {
+  font-family: $base__font-family !important;
+}
+
+@media (min-width: $md-min-width) {
+  .ant-form-item {
+    display: flex;
+    .ant-form-item-control-wrapper {
+      flex: 1;
+    }
+  }
+}
+
+.ant-form-item-label {
+  text-align: left;
+}
+
+.ant-form-item > .ant-form-item,
+.ant-form-item :not(.ant-form) > .ant-form-item {
+  margin-top: -2px;
+}
+
+form .ant-select:only-child,
+form .ant-cascader-picker:only-child {
+  display: inline-block;
+}
+
+form .captcha img {
+  border: 1px solid #ccc;
+  margin-right: 8px;
+  border-radius: 3px;
+}
+
+form .space-border {
+  border: 0.03rem dashed #1890ff;
+  margin-bottom: 30px;
+}
+
+form .row-title {
+  top: -40px;
+  position: relative;
+  display: inline-flex;
+  background-color: white;
+  margin-bottom: 0;
+  span {
+    font-size: 1.1rem;
+    margin: 0 5px 0 8px;
+  }
+  .anticon {
+    font-size: 1.2rem;
+    color: $primary;
+  }
+}

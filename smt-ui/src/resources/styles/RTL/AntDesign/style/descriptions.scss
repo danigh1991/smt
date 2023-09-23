@@ -1,0 +1,25 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN DESCRIPTION */
+
+.rtl {
+  .ant-descriptions {
+    direction: rtl;
+    font-family: $base-rtl__font-family;
+    .ant-descriptions-title {
+      font-size: 14px;
+    }
+    .ant-descriptions-title,
+    .ant-descriptions-item-label,
+    .ant-descriptions-item-content {
+      text-align: right;
+    }
+  }
+  .ant-descriptions-bordered .ant-descriptions-item-label,
+  .ant-descriptions-bordered .ant-descriptions-item-content {
+    border-right: unset;
+    border-left: 1px solid $border-lighten;
+  }
+}

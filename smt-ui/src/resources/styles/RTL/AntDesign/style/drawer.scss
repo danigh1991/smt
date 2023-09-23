@@ -1,0 +1,36 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN DRAWER */
+
+.rtl {
+  .ant-drawer {
+    .ant-drawer-content-wrapper {
+      .ant-drawer-wrapper-body {
+        .ant-drawer-header {
+          .ant-drawer-title {
+            text-align: right;
+            direction: rtl;
+            span {
+              margin-right: 5px;
+            }
+            .anticon {
+              color: $blue-darken;
+            }
+          }
+          .ant-drawer-close {
+            left: 0;
+            right: auto;
+          }
+        }
+      }
+      .button-bottom {
+        text-align: left;
+        right: 0;
+        left: unset;
+        z-index: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+// Import mixins from "core" module
+@import "../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN CAROUSEL */
+
+.ant-carousel .slick-slider {
+  background: #000000;
+  overflow: hidden;
+}

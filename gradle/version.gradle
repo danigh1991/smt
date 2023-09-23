@@ -1,0 +1,24 @@
+//set version
+if (project.hasProperty("git_version")) {
+    project.version = project.ext.git_version
+}
+// Find the right file
+File grailsBuildInfoFile = new File("$projectDir/src/main/resources/buildInfo.properties")
+Properties properties = new Properties()
+// Add new properties from various sources
+properties.setProperty('build.time', new Date().format("yyyy-MM-dd HH:mm:ss"))
+// Get a System property
+properties.setProperty('build.java.version', System.getProperty('java.version'))
+// Get the host name where the build was created
+properties.setProperty('build.version', version)
+// Add property set by your CI (in this case Bamboo)
+Map<String, String> env = System.getenv()
+if(env.bamboo_buildNumber) {
+    properties.setProperty('build.number', env.bamboo_buildNumber)
+    properties.setProperty('build.git.revision', env.bamboo_planRepository_revision)
+    properties.setProperty('build.git.branch', env.bamboo_planRepository_branch)
+}
+// Write the properties back to the file
+grailsBuildInfoFile.withOutputStream {
+    properties.store(it,null)
+}

@@ -1,0 +1,198 @@
+@import "../../../mixins";
+
+.rtl {
+  #root {
+    font-family: $base-rtl__font-family;
+  }
+
+  .scrollbars {
+    div {
+      margin-right: 0 !important;
+    }
+    div:nth-child(3) {
+      left: 2px;
+    }
+  }
+
+  .menuLeft {
+    &__navigation {
+      .ant-menu-submenu-inline
+        > .ant-menu-submenu-title
+        .ant-menu-submenu-arrow {
+        right: unset;
+        left: 50px;
+      }
+
+      .ant-menu-inline,
+      .ant-menu-vertical,
+      .ant-menu-vertical-left {
+        border-left: none;
+      }
+
+      &.ant-menu-inline-collapsed {
+        .ant-menu-submenu > .ant-menu-submenu-title .ant-menu-submenu-arrow {
+          right: unset;
+          left: 14px;
+        }
+
+        .menuLeft__icon {
+          right: 30px;
+        }
+      }
+
+      &.ant-menu-light {
+        .ant-menu-item:after {
+          right: 0;
+        }
+        .ant-menu-sub {
+          .ant-menu-item {
+            padding-right: 48px;
+            padding-left: 12px !important;
+          }
+        }
+      }
+
+      &.ant-menu-dark {
+        .ant-menu-item:after {
+          border-left: 3px solid $white !important;
+          border-right: none !important;
+          left: 0;
+          right: auto;
+        }
+      }
+    }
+
+    &__icon {
+      left: 20px;
+      right: unset;
+    }
+
+    &__item-title {
+      text-align: right;
+    }
+
+    .ant-menu-item,
+    .ant-menu-inline .ant-menu-submenu-title {
+      padding-right: 24px;
+      padding-left: 12px !important;
+      overflow: hidden !important;
+    }
+  }
+
+  .menuTop {
+    &__logo {
+      float: right;
+    }
+
+    &__icon {
+      margin-right: unset !important;
+      margin-left: rem(9) !important;
+      float: right;
+    }
+    .ant-menu-item-divider {
+      float: left;
+    }
+  }
+
+  .breadcrumbBar {
+    direction: rtl;
+    text-align: right;
+  }
+
+  .borderLess .card {
+    text-align: right;
+  }
+
+  .main-login {
+    &__block {
+      &__sidebar {
+        left: 0;
+        h4 {
+          font-size: 1.2rem;
+        }
+      }
+      @media (min-width: $md-min-width) {
+        &--extended {
+          .main-login__block__form {
+            margin-right: 0;
+            margin-left: rem(300);
+          }
+          .main-login__block__sidebar {
+            &__title {
+              text-align: right;
+              direction: rtl;
+            }
+          }
+        }
+      }
+    }
+    &__footer {
+      direction: rtl;
+      ul {
+        li {
+          margin-left: rem(10);
+          margin-right: 0;
+          &:last-child {
+            margin-left: 0;
+          }
+          a {
+            margin-left: rem(10);
+            margin-right: 0;
+          }
+        }
+      }
+    }
+    .utils {
+      &__forgot-password {
+        text-align: right;
+      }
+    }
+  }
+
+  #error-403,
+  #error-404,
+  #loading {
+    direction: rtl;
+    .utils {
+      &__title {
+        float: right;
+      }
+    }
+  }
+
+  .profile-image {
+    .ant-upload {
+      float: right;
+    }
+  }
+
+  .ant-menu-vertical {
+    .ant-menu-item {
+      text-align: right;
+    }
+  }
+
+  .ant-menu-horizontal {
+    text-align: right;
+  }
+
+  .ltr-format {
+    font-family: $base__font-family;
+    direction: ltr;
+  }
+
+  .topbar {
+    &__dropdown {
+      .ant-dropdown-link {
+        padding-right: unset;
+        padding-left: 15px;
+      }
+      .ant-dropdown-link:after {
+        right: unset;
+        left: 0;
+        margin-right: 0.255em;
+        margin-left: unset;
+      }
+    }
+  }
+}

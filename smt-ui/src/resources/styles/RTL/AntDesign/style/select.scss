@@ -1,0 +1,94 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN SELECT */
+
+.rtl {
+  .ant-select-selection-selected-value {
+    float: right;
+    padding-right: unset !important;
+    padding-left: 16px;
+  }
+  .ant-select-dropdown-menu-item {
+    direction: rtl;
+  }
+  .ant-select-dropdown {
+    .ant-select-item-option-content {
+      text-align: right;
+    }
+    .ant-select-search {
+      &__field {
+        text-align: right;
+      }
+    }
+  }
+  .ant-select-selection {
+    &__placeholder {
+      left: 9px;
+      right: 0;
+      text-align: right;
+    }
+    &__rendered {
+      margin-left: 24px;
+      margin-right: 11px !important;
+    }
+    &__clear {
+      right: unset;
+      left: 11px;
+    }
+  }
+  .ant-select-selection--multiple {
+    .ant-select-selection {
+      &__choice {
+        float: right;
+        margin-left: 4px;
+        margin-right: unset;
+        padding: 0 10px 0 20px;
+        &__remove {
+          right: unset;
+          left: 4px;
+        }
+      }
+      &__rendered {
+        margin-right: 2px;
+        margin-left: 5px;
+      }
+      &__placeholder {
+        margin-right: 6px;
+        margin-left: unset;
+        right: 0;
+        left: 9px;
+        text-align: right;
+      }
+    }
+    .ant-select-search--inline {
+      float: right;
+    }
+  }
+  .ant-select-selection--single {
+    .ant-select-search--inline {
+      float: right;
+      top: 0;
+    }
+  }
+  .ant-select-dropdown-menu {
+    text-align: right;
+  }
+  .ant-select-arrow {
+    right: unset;
+    left: 11px;
+  }
+  .ant-select-tree {
+    .ant-select-tree-switcher {
+      float: right;
+      line-height: 25px;
+    }
+    .ant-select-tree-node-content-wrapper {
+      text-align: right;
+    }
+  }
+  .anticon {
+    vertical-align: 0.125em;
+  }
+}

@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+zuul:
+  routes:
+    app:
+      path: /api/**
+      url: http://localhost:9090/api
+    ui:
+      path: /**
+      url: http://localhost:3000
+  host:
+    socket-timeout-millis: 900000
+
+multipart:
+  max-file-size: 5MB
+  max-request-size: 5MB

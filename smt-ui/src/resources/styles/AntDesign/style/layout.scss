@@ -1,0 +1,27 @@
+// Import mixins from "core" module
+@import "../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN LAYOUT */
+
+.ant-layout {
+  min-height: 100vh !important;
+  background: $gray-lighten;
+}
+
+.ant-layout-header {
+  padding: 0 !important;
+}
+
+.ant-layout-footer {
+  padding: 0 !important;
+  background: transparent;
+}
+
+.ant-collapse {
+  background: transparent;
+}
+
+.ant-layout-sider {
+  transition: all 0.3s;
+}

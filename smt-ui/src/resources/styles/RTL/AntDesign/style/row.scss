@@ -1,0 +1,11 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN ROW */
+
+.rtl {
+  .ant-row {
+    direction: rtl;
+  }
+}

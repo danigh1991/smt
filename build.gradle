@@ -1,0 +1,85 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+allprojects {
+    repositories {
+        maven{ url "http://192.168.30.30:10680/repository/maven-central/" }
+        maven{ url "http://192.168.30.30:10680/repository/thirdparty/" }
+        maven{ url "http://192.168.30.30:10680/repository/test/" }
+        maven{ url "http://192.168.30.30:10680/repository/maven-snapshots/" }
+    }
+
+    apply plugin: 'idea'
+
+    group = 'ir.samatco.smt'
+    version = '1.0.0'
+
+    apply from: "$rootDir/gradle/ci.gradle"
+}
+
+ext {
+    javaProjects = [':smt-core', ':smt-gateway'].collect { project it }
+    webProjects = [':smt-ui'].collect { project it }
+}
+
+subprojects {
+    if (project in javaProjects) {
+        apply plugin: 'java'
+        sourceCompatibility = 1.7
+        targetCompatibility = 1.7
+        [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+    }
+
+    if (project in webProjects) {
+        task npmBuild(type: Exec) {
+            logging.captureStandardOutput LogLevel.INFO
+            logging.captureStandardError LogLevel.INFO
+            inputs.dir "src"
+            outputs.dir "build"
+            if(Os.isFamily(Os.FAMILY_WINDOWS)) {
+                commandLine 'cmd', '/c', 'yarn', 'build'
+            } else {
+                commandLine 'yarn', 'build'
+            }
+        }
+        task distTar(type: Tar) {
+            dependsOn npmBuild
+            baseName = "${project.name}-${project.version}"
+            compression 'gzip'
+            extension 'tar'
+            destinationDir = "$buildDir/distributions" as File
+            from('dist') { into('/') }
+        }
+        idea {
+            module {
+                excludeDirs = [".tmp", "dist", "node_modules"].collect { file("$projectDir/$it") }
+                sourceDirs = [file("$projectDir/src")]
+            }
+        }
+    }
+
+    apply plugin: 'maven-publish'
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                artifact distTar {
+                    classifier 'dist'
+                }
+            }
+        }
+        repositories {
+            maven() {
+                credentials {
+                    username project.nexus_user
+                    password project.nexus_pass
+                }
+                url "http://192.168.30.30:10680/repository/test/"
+            }
+        }
+    }
+}
+
+task stage {
+    dependsOn subprojects*.publish
+}
+

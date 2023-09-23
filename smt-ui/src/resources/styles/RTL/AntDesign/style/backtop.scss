@@ -1,0 +1,12 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN BACKTOP */
+
+.rtl {
+  .ant-back-top {
+    right: rem(0);
+    left: rem(50);
+  }
+}

@@ -1,0 +1,60 @@
+apply plugin: 'application'
+mainClassName = 'ir.samatco.smt.Application'
+configurations.all {
+    // check for updates every build
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+dependencies {
+    
+    //Spring
+    compile 'org.springframework.boot:spring-boot-starter-data-rest:1.2.8.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-web:1.2.8.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-security:1.2.8.RELEASE'
+    compile ('org.springframework.boot:spring-boot-starter-data-jpa:1.2.8.RELEASE') {
+        exclude group: 'org.hibernate', module: 'hibernate-entitymanager'
+    }
+    compile 'org.springframework.ws:spring-ws-core:2.4.0.RELEASE'
+
+    //Project
+    compile 'org.apache.poi:poi:3.17'
+    compile 'org.apache.poi:poi-ooxml:3.17'
+    compile 'org.flywaydb:flyway-core:3.2.1'
+    compile 'com.squareup.okhttp3:okhttp:3.12.1'
+    compile 'mysql:mysql-connector-java:5.1.34'
+    compile 'org.apache.commons:commons-lang3:3.2'
+    compile 'io.springfox:springfox-swagger2:2.3.1'
+    compile 'commons-validator:commons-validator:1.7'
+    compile 'io.springfox:springfox-swagger-ui:2.3.1-samat'
+    compile 'org.eclipse.persistence:eclipselink:2.5.2'
+    compile 'com.pardazeshgaran.jalaliCalendar:jalaliCalendar:1.0.2'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.22'
+
+    //Internal
+    compile ('ir.samatco.captcha:captcha:1.0.0-SNAPSHOT') { changing = true }
+    compile ('ir.samatco.workflowprocess:workflowprocess:1.0.0-SNAPSHOT') { changing = true }
+}
+
+task migrateTar(type: Tar) {
+    baseName = project.name
+    compression 'gzip'
+    extension 'tar'
+    destinationDir = "$buildDir/distributions" as File
+
+    from('src/main/resources/db/conf') {
+        into('migration/conf')
+    }
+    from('src/main/resources/db/migration') {
+        into('migration/sql')
+    }
+    doLast{
+        apply from: "$rootDir/gradle/version.gradle"
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact migrateTar { classifier 'migrate' }
+        }
+    }
+}

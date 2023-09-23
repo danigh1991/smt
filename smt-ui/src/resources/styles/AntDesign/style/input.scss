@@ -1,0 +1,19 @@
+// Import mixins from "core" module
+@import "../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN INPUT */
+
+.ant-form-rtl {
+  .ant-form-item-has-feedback {
+    .ant-input-affix-wrapper {
+      .ant-input-suffix {
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+.ant-input-disabled {
+  background: $gray-lighten-more-more;
+}

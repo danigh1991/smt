@@ -1,0 +1,55 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN MODAL */
+
+.rtl {
+  .ant-modal {
+    text-align: right;
+    .ant-modal-content {
+      .ant-modal-close {
+        left: 0;
+        .ant-modal-close-x {
+          line-height: 50px;
+        }
+      }
+      .ant-modal-title {
+        text-align: right;
+        direction: rtl;
+        .anticon {
+          vertical-align: unset;
+          color: $blue-darken;
+        }
+        span {
+          margin-right: 10px;
+          margin-left: unset;
+        }
+      }
+      .ant-modal-confirm-body {
+        .anticon {
+          margin-right: unset;
+          margin-left: 16px;
+          float: right;
+        }
+        .ant-modal-confirm-title {
+          direction: rtl;
+        }
+        .ant-modal-confirm-content {
+          margin-right: 38px;
+          margin-left: unset;
+          direction: rtl;
+        }
+      }
+      .ant-modal-confirm-btns {
+        margin-top: 24px;
+        float: left;
+        direction: rtl;
+        button + button {
+          margin-right: 8px;
+          margin-left: unset;
+        }
+      }
+    }
+  }
+}

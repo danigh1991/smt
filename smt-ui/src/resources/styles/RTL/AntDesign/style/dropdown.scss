@@ -1,0 +1,26 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN DROPDOWN */
+
+.rtl {
+  .ant-dropdown {
+    font-family: $base-rtl__font-family;
+  }
+  .ant-dropdown-menu-item {
+    text-align: right;
+  }
+  .ant-dropdown-menu-item {
+    .anticon,
+    .fa {
+      margin-right: 0 !important;
+      margin-left: 8px;
+      float: right;
+    }
+  }
+  .ant-dropdown-menu-item > .anticon:first-child,
+  .ant-dropdown-menu-submenu-title > .anticon:first-child {
+    margin-right: 0;
+  }
+}

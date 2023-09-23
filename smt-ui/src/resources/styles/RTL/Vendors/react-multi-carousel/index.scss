@@ -1,0 +1,11 @@
+.rtl {
+  .react-multi-carousel-list {
+    .ant-card-body {
+      .ant-card-meta {
+        .ant-card-meta-detail {
+          direction: rtl;
+        }
+      }
+    }
+  }
+}

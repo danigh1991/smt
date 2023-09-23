@@ -1,0 +1,14 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN BADGE */
+
+.rtl {
+  .ant-badge {
+    .ant-badge-status-text {
+      margin-left: unset;
+      margin-right: 8px;
+    }
+  }
+}

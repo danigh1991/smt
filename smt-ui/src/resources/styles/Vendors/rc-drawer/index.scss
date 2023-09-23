@@ -1,0 +1,32 @@
+.drawer-content {
+  overflow: visible;
+  background: $menuBg;
+  transition: background 0.3s;
+}
+
+.drawer-button {
+  background: $menuBg !important;
+  top: 64px;
+}
+
+.drawer.drawer-open .drawer-button-icon {
+  background: transparent !important;
+}
+
+.drawer-button-icon {
+  background: $white !important;
+  &:after,
+  &:before {
+    background: $white !important;
+  }
+}
+
+.drawer {
+  .ant-layout-sider {
+    box-shadow: none !important;
+  }
+
+  .ant-menu {
+    border-right: none !important;
+  }
+}

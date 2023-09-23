@@ -1,0 +1,13 @@
+if (!project.hasProperty("build_number")) {
+    project.ext.build_number = "SNAPSHOT"
+}
+if (project.hasProperty("git_version")) {
+    project.version = project.ext.git_version
+}else{
+    project.version = project.version + "-$build_number"
+}
+if (!project.hasProperty('nexus_user')) {
+    project.ext.nexus_user = 'admin'
+    project.ext.nexus_pass = 'a@12345'
+}
+logger.error(project.toString()+' | Build Version: '+project.version)

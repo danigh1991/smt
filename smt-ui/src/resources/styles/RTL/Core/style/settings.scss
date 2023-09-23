@@ -1,0 +1,25 @@
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  THEME PARAMS STYLES */
+
+.rtl {
+  .themeLight {
+    .ant-layout-sider {
+      border-right: none;
+      border-left: 1px solid $gray-border;
+    }
+    &:not(.menuCollapsed) {
+      .ant-menu {
+        border-left: none;
+      }
+      .ant-menu-root {
+        //padding-right: 15px;
+      }
+    }
+  }
+  .ant-menu-inline-collapsed {
+    //margin-right: 15px;
+    padding-right: 0 !important;
+  }
+}

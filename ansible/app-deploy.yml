@@ -1,0 +1,33 @@
+---
+- hosts: app.host
+  roles:
+  - role: app-db
+    group_url: "ir/samatco/smt"
+    db_name: smt_db
+    db_port: "3340"
+    migrate_module: "smt-core"
+  - role: java-app
+    group_url: "ir/samatco/smt"
+    app_name: "smt-core"
+    app_artifact_name: "smt-core"
+    app_links:
+    - smt_db
+  - role: java-app
+    group_url: "ir/samatco/smt"
+    app_name: "smt-gateway"
+    app_artifact_name: "smt-gateway"
+    app_links:
+    - smt-core
+  - role: web-asset
+    group_url: "ir/samatco/smt"
+    app_name: "smt-ui"
+    app_artifact_name: "smt-ui"
+    empty_asset_dir: true
+  - role: web-app
+    group_url: "ir/samatco/smt"
+    app_name: "smt-ui"
+    gateway_url: "http://smt-core:9090"
+    app_ports:
+    - "40080:80"
+    app_links:
+    - smt-core

@@ -1,0 +1,77 @@
+// Import mixins from "core" module
+@import "../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN UPLOAD */
+
+.file-upload {
+  .ant-upload-list {
+    .ant-upload-list-picture-card-container,
+    .ant-upload-list-item {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+  }
+  .ant-upload {
+    width: 100% !important;
+    height: auto !important;
+    margin-bottom: 0 !important;
+    flex-direction: column;
+    p {
+      line-height: 2;
+    }
+    .ant-upload-text {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .ant-upload-hint {
+      font-weight: 500;
+    }
+    .ant-upload-drag-icon {
+      .anticon {
+        font-size: 38px;
+        color: $blue;
+      }
+    }
+  }
+  .ant-form-item-control {
+    line-height: 10px;
+  }
+  .ant-form-explain {
+    margin-top: 10px;
+  }
+}
+
+.post-management-upload {
+  .ant-form-item {
+    width: 100%;
+  }
+  .ant-upload {
+    flex-direction: column;
+    width: 100% !important;
+    height: auto !important;
+    p {
+      line-height: 2;
+    }
+    .ant-upload-text {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .ant-upload-hint {
+      font-weight: 500;
+    }
+    .ant-upload-drag-icon {
+      .anticon {
+        font-size: 38px;
+        color: $blue;
+      }
+    }
+  }
+}
+
+.ant-upload-list-picture-card {
+  .ant-upload-list-item-actions,
+  .ant-upload-list-item-info {
+    z-index: 0 !important;
+  }
+}

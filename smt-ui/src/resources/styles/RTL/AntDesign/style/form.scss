@@ -1,0 +1,89 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN Form */
+
+.rtl {
+  .ant-form {
+    font-family: $base-rtl__font-family;
+    button {
+      .anticon {
+        //margin-left: 5px;
+      }
+    }
+    .button {
+      text-align: left;
+    }
+    .cancel-button {
+      margin-bottom: 0;
+    }
+    .submit-button {
+      margin-right: 10px;
+      margin-left: unset;
+    }
+  }
+
+  .ant-form-item label {
+    float: right;
+  }
+
+  .ant-form-vertical .ant-form-item-label {
+    text-align: right;
+  }
+
+  .ant-form-item-label {
+    text-align: right;
+    float: right;
+  }
+
+  .ant-form-explain,
+  .ant-form-item-explain {
+    direction: rtl;
+    text-align: right;
+    font-family: $base-rtl__font-family;
+  }
+
+  .form-actions {
+    direction: rtl;
+    text-align: right;
+    button:first-child {
+      margin-right: 0 !important;
+      margin-left: 1.5rem;
+    }
+  }
+
+  .ant-form-item-required:before {
+    margin-right: unset;
+    margin-left: 4px;
+  }
+
+  .has-success.has-feedback,
+  .has-error.has-feedback {
+    .ant-form-item-children-icon {
+      left: 0;
+      right: unset;
+    }
+  }
+
+  form .has-feedback .ant-input-password-icon {
+    margin-left: 18px;
+    margin-right: unset;
+  }
+
+  form .captcha {
+    text-align: right;
+    direction: rtl;
+  }
+
+  form .captcha img {
+    margin-left: 8px;
+    margin-right: 0;
+  }
+
+  form .row-title {
+    span {
+      margin: 0 8px 0 5px;
+    }
+  }
+}

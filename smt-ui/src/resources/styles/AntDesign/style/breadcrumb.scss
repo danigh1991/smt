@@ -1,0 +1,14 @@
+// Import mixins from "core" module
+@import "../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN BREADCRUMB */
+
+.ant-breadcrumb {
+  font-size: 14px;
+  display: flex;
+}
+
+.text-muted {
+  text-decoration: none !important;
+}

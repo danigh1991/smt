@@ -1,0 +1,36 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN COL */
+
+.rtl {
+  @media (min-width: 992px) {
+    .ant-col-lg-1,
+    .ant-col-lg-2,
+    .ant-col-lg-3,
+    .ant-col-lg-4,
+    .ant-col-lg-5,
+    .ant-col-lg-6,
+    .ant-col-lg-7,
+    .ant-col-lg-8,
+    .ant-col-lg-9,
+    .ant-col-lg-10,
+    .ant-col-lg-11,
+    .ant-col-lg-12,
+    .ant-col-lg-13,
+    .ant-col-lg-14,
+    .ant-col-lg-15,
+    .ant-col-lg-16,
+    .ant-col-lg-17,
+    .ant-col-lg-18,
+    .ant-col-lg-19,
+    .ant-col-lg-20,
+    .ant-col-lg-21,
+    .ant-col-lg-22,
+    .ant-col-lg-23,
+    .ant-col-lg-24 {
+      float: right;
+    }
+  }
+}

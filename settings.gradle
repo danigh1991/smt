@@ -1,0 +1,3 @@
+rootProject.name = 'smt'
+include 'smt-core', 'smt-ui','smt-gateway'
+

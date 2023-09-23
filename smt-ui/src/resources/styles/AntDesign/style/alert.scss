@@ -1,0 +1,22 @@
+// Import mixins from "core" module
+@import "../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN ALERT */
+
+.verification-code {
+  .ant-alert-content {
+    padding-top: rem(7);
+  }
+  .ant-statistic-title {
+    float: left;
+    font-size: rem(13);
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  .ant-statistic-content-value {
+    float: left;
+    font-size: rem(15);
+    font-weight: bold;
+  }
+}

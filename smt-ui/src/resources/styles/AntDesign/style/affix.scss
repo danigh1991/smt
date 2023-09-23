@@ -1,0 +1,21 @@
+// Import mixins from "core" module
+@import "../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN AFFIX */
+
+.affix-container {
+  position: fixed;
+  bottom: 40px;
+  z-index: 2;
+  .affix-background {
+    display: flex;
+    .ant-btn-circle.ant-btn-lg,
+    .ant-btn-circle-outline.ant-btn-lg {
+      width: 60px;
+      font-size: 25px;
+      height: 60px;
+      margin: 0 5px;
+    }
+  }
+}

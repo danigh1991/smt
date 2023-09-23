@@ -1,0 +1,36 @@
+// Import mixins from "core" module
+@import "../../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN PAGINATION */
+
+.rtl {
+  .ant-pagination {
+    .ant-select-selection {
+      &__rendered {
+        direction: ltr;
+      }
+    }
+    .ant-select-dropdown-menu {
+      direction: ltr;
+    }
+  }
+  .ant-pagination-item,
+  .ant-pagination-total-text,
+  .ant-pagination-options-size-changer,
+  .ant-pagination-prev,
+  .ant-pagination-jump-prev,
+  .ant-pagination-jump-next {
+    font-family: $base-rtl__font-family;
+    margin-right: unset;
+    margin-left: 8px;
+  }
+  .ant-pagination-total-text {
+    float: right;
+  }
+  .ant-pagination-options {
+    margin-right: 16px;
+    margin-left: unset;
+    float: left;
+  }
+}

@@ -1,0 +1,76 @@
+// Import mixins from "core" module
+@import "../../mixins";
+
+/////////////////////////////////////////////////////////////////////////////////////////
+/*  ANT DESIGN TABLE */
+
+.ant-table {
+  .ant-table-tbody,
+  .ant-table-thead {
+    tr {
+      td,
+      th {
+        text-align: center !important;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .ant-table-tbody > tr .ant-table-wrapper:only-child .ant-table.ant-table-rtl {
+    margin-bottom: 0;
+  }
+
+  .break-line {
+    white-space: normal !important;
+  }
+
+  .editable-cell {
+    position: relative;
+  }
+
+  .editable-cell-icon,
+  .editable-cell-icon-check {
+    position: absolute;
+    left: 0;
+    right: unset;
+    width: 20px;
+    cursor: pointer;
+  }
+
+  .editable-cell-icon {
+    line-height: 18px;
+    display: none;
+  }
+
+  .editable-cell-icon-check {
+    line-height: 28px;
+  }
+
+  .editable-cell:hover .editable-cell-icon {
+    display: inline-block;
+  }
+
+  .editable-cell-icon:hover,
+  .editable-cell-icon-check:hover {
+    color: #108ee9;
+  }
+
+  .editable-add-btn {
+    margin-bottom: 8px;
+  }
+
+  .editable-row-operations a {
+    margin-right: 8px;
+    margin-left: unset;
+  }
+
+  .editable-cell-input-wrapper,
+  .editable-cell-text-wrapper {
+    padding-left: 24px;
+    padding-right: unset;
+  }
+
+  .editable-cell-text-wrapper {
+    padding: 5px 5px 5px 24px;
+  }
+}
