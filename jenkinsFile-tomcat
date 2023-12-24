@@ -1,0 +1,106 @@
+pipeline {
+    agent any
+    parameters {
+        string(defaultValue: '$BUILD_NUMBER', description: '', name: 'VERSION', trim: true)
+        choice(name: 'DEPLOYMENT_DESTINATION', choices: ['core-devops'], description: '')
+        choice(name: 'DEPLOYMENT_TYPE', choices: ['build and deploy', 'deploy'], description: '')
+    }
+    tools {
+        maven 'maven363'
+        jdk 'jdk8'
+        groovy 'groovy4'
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'gogs', url: 'http://172.31.67.23:8086/misc/webApp.git']]])
+            }
+        }
+        stage('Build'){
+            agent {
+                docker {
+                    image 'maven:3638'
+                    label 'builder'
+                    args '--dns="172.31.80.30" --dns="172.31.80.12" --add-host  core-devops.modernisc.com:172.31.67.23 --network localops'
+                }
+            }
+            steps{ 
+                ansiColor('xterm') {
+                      echo "${env.JOB_NAME}"
+                      sh label: '', script: '''#!/bin/bash
+                      if [ "${DEPLOYMENT_TYPE}" == "deploy" ]; then
+                        echo "Only Deploy Job"
+                      else
+                        echo "this is Build Number : ${BUILD_NUMBER}"              
+                        echo "this is version number: ${VERSION}"
+                        java -version
+                        mvn -X clean install  
+                      fi
+                      '''
+                }
+            }
+        } 
+       stage('Upload Artifact'){
+            steps{ 
+                script {
+                echo "${env.JOB_NAME}"
+                if ( "${DEPLOYMENT_TYPE}" == "deploy" ){
+                   echo "Only Deploy Job"
+                } else{
+                    nexusArtifactUploader artifacts: [[artifactId: 'java-web', classifier: '', file: '/var/jenkins_home/workspace/workspace/webApp/target/java-web-${VERSION}.war', type: 'war']], credentialsId: 'nexus', groupId: 'com.mt', nexusUrl: 'core-devops.modernisc.com:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'Builds', version: '${VERSION}'           
+                }
+                }
+            }
+        }
+        stage("Code Quality Check by sonar") {
+            steps {
+                git credentialsId: 'gogs', url: 'http://172.31.67.23:8086/misc/webApp.git'
+                script {
+                def scannerHome = tool 'sonarqube';
+                    withSonarQubeEnv("sonarqube") {
+                    sh "${tool("sonarqube")}/bin/sonar-scanner -Dsonar.projectKey=java-web -Dsonar.sources=. -Dsonar.host.url=http://172.31.67.23:9000 -Dsonar.login=e3e9cd6398b3aca083ec5ebc23326a1dbf02ecae -Dsonar.java.binaries=/var/jenkins_home/workspace/workspace/webApp/target/classes -Dsonar.sourceEncoding=UTF-8 -Dsonar.language=java"
+                    }
+                        
+                }
+            }
+        }
+        stage('Deployment') {
+            agent {
+              label 'deployer'
+            }
+            steps {
+                ansiColor('xterm') {
+                    echo "this is Build Number : ${BUILD_NUMBER}"
+                    sh label: '', script: '''#!/bin/bash -l
+File="ansible/roles.txt"
+Roles="ansible/install_roles.yml"
+Params="ansible/param.json"
+has_db=false
+>$Roles
+>$Params
+if [ ! -f $File  ]; then
+        echo "$File : does not exists "
+        exit 1
+elif [ ! -r $File  ]; then
+        echo "$File : can not read "
+        exit 1
+elif [ ! -s $File ]; then
+        echo "File empty"
+        exit 1
+fi
+lines=`cat $File`
+for line in $lines; do
+        echo "- src: http://core-devops.modernisc.com:8081/repository/Builds/ansible-roles/$line/1.0.0/$line-1.0.0-role.tar" >> $Roles
+        echo "  name: $line" >> $Roles
+        echo "{\\"app_version\\":\\"${VERSION}\\"}" > $Params
+done
+rm -rf ansible/roles/*'''
+                    sh label: '', script: '''wget http://core-devops.modernisc.com:8081/repository/Builds/ansible-hosts/${DEPLOYMENT_DESTINATION}/1.0.0/${DEPLOYMENT_DESTINATION}-1.0.0-inventory.tar
+tar -xf ${DEPLOYMENT_DESTINATION}-1.0.0-inventory.tar -C ansible/
+ansible-galaxy install -r ansible/install_roles.yml -p ansible/roles
+(cd ansible ; ANSIBLE_FORCE_COLOR=true ansible-playbook app-deploy.yml -i ${DEPLOYMENT_DESTINATION}/${DEPLOYMENT_DESTINATION}  --extra-vars @param.json )'''
+                }
+            }
+        }
+    }
+}
