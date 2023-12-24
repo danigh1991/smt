@@ -1,0 +1,80 @@
+pipeline {
+    agent any
+    parameters {
+        string(defaultValue: '$BUILD_NUMBER', description: '', name: 'VERSION', trim: true)
+        choice(name: 'DEPLOYMENT_TYPE', choices: ['build and deploy', 'deploy'], description: '')
+    }
+    tools {
+        maven 'maven363'
+        jdk 'jdk8'
+        groovy 'groovy4'
+    }
+    environment {
+        registryCredentials = "nexus"
+        registry = "core-devops.modernisc.com:8085"
+        dockerImage = ''
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'gogs', url: 'http://172.31.67.23:8086/misc/webApp.git']]])
+            }
+        }
+        stage('Build'){
+            agent {
+                docker {
+                    image 'docker:agent'
+                    label 'builder'
+                    args '--dns="172.31.80.30" --dns="172.31.80.12" --privileged=true --add-host  core-devops.modernisc.com:172.31.67.23 --network localops'
+                }
+            }
+            steps{ 
+                ansiColor('xterm') {
+                      sh label: '', script: '''#!/bin/bash
+                      if [ "${DEPLOYMENT_TYPE}" == "deploy" ]; then
+                        echo "Only Deploy Job"
+                      else
+                        echo "this is Build Number : ${BUILD_NUMBER}"
+                        echo "this is version number: ${VERSION}"
+                        java -version
+                        mvn -X clean install  
+                      fi
+                      '''                                      
+                }
+            }
+        }
+        stage('Build Image'){
+            agent {
+                node {
+                    label 'builder'
+                }
+            }
+            steps{
+                ansiColor('xterm'){
+                    script{
+                        sh 'cd /opt/jenkins_home/workspace/workspace/webApp'
+                        sh 'docker build -t core-devops.modernisc.com:8085/java-web:${VERSION} .'
+                    }
+                }
+            }   
+        } 
+        stage('Push Image To Artifact'){
+            agent {
+                node {
+                    label 'builder'
+                }
+            }
+            steps{
+                ansiColor('xterm'){
+                    script{
+                        withCredentials([string(credentialsId: 'nexuspass', variable: 'nexus_pass')]) {
+                           sh "sudo docker login -u admin -p ${nexus_pass}  http://core-devops.modernisc.com:8085"
+                        }
+                        sh 'sudo docker push core-devops.modernisc.com:8085/java-web:${VERSION}'
+                        sh 'docker rmi core-devops.modernisc.com:8085/java-web:${VERSION}'
+                    }
+                }
+            }   
+        }
+    }
+}
